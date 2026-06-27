@@ -69,6 +69,9 @@
     if (isValid) {
       if (username === user.username && password === user.password) {
         alert("Đăng nhập thành công! Xin chào " + user.name);
+        // 👉 Chuyển hướng về trang chủ
+        window.location.href = "../index.html";
+        // Nếu index.html nằm cùng thư mục thì chỉ cần "index.html"
       } else {
         alert("Sai tên đăng nhập hoặc mật khẩu!");
       }
