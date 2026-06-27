@@ -31,5 +31,15 @@
   fetch("footer.html")
           .then(res => res.text())
           .then(data => document.getElementById("footer").innerHTML = data);
+  document.addEventListener("DOMContentLoaded", function() {
+      let user = JSON.parse(sessionStorage.getItem("user"));
+      if (user) {
+          // Ẩn nút Đăng ký
+          document.getElementById("registerNav").style.display = "none";
+          // Hiện tên người dùng
+          document.getElementById("userName").innerText = user.name;
+          document.getElementById("userNav").classList.remove("d-none");
+      }
+  });
 </script>
 </html>
