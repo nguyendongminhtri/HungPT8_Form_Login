@@ -36,7 +36,7 @@
       console.log("user --->", user);
 
       if (user) {
-          // Ẩn nút Đăng ký
+          // Ẩn nút Đăng ký nếu tồn tại
           const registerNav = document.getElementById("registerNav");
           if (registerNav) {
               registerNav.style.display = "none";
@@ -46,6 +46,7 @@
           const userNav = document.getElementById("userNav");
           const userName = document.getElementById("userName");
           if (userNav && userName) {
+              console.log('user.name = ', user.name)
               userName.innerText = user.name;
               userNav.classList.remove("d-none");
           }
