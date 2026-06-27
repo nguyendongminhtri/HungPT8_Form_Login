@@ -23,36 +23,35 @@
 </body>
 <script>
   // Load navbar
+  // Load navbar
   fetch("navbar.html")
-          .then(res => res.text())
-          .then(data => document.getElementById("navbar").innerHTML = data);
+      .then(res => res.text())
+      .then(data => {
+          document.getElementById("navbar").innerHTML = data;
+
+          // Sau khi navbar đã load xong thì mới xử lý user
+          let user = JSON.parse(sessionStorage.getItem("user"));
+          console.log("user --->", user);
+
+          if (user) {
+              const registerNav = document.getElementById("registerNav");
+              const userNav = document.getElementById("userNav");
+              const userName = document.getElementById("userName");
+
+              if (registerNav) {
+                  registerNav.style.display = "none";
+              }
+              if (userNav && userName) {
+                  userName.innerText = user.name;
+                  userNav.classList.remove("d-none");
+              }
+          }
+      });
+
 
   // Load footer
   fetch("footer.html")
           .then(res => res.text())
           .then(data => document.getElementById("footer").innerHTML = data);
-  document.addEventListener("DOMContentLoaded", function() {
-      let user = JSON.parse(sessionStorage.getItem("user"));
-      console.log("user --->", user);
-
-      if (user) {
-          console.log('vao if khong')
-          // Ẩn nút Đăng ký nếu tồn tại
-          const registerNav = document.getElementById("registerNav");
-          console.log('rigisterNav -->', registerNav)
-          if (registerNav) {
-              registerNav.style.display = "none";
-          }
-
-          // Hiện tên người dùng
-          const userNav = document.getElementById("userNav");
-          const userName = document.getElementById("userName");
-          if (userNav && userName) {
-              console.log('user.name = ', user.name)
-              userName.innerText = user.name;
-              userNav.classList.remove("d-none");
-          }
-      }
-  });
 </script>
 </html>
